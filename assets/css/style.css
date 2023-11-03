@@ -15,6 +15,19 @@ a {
     text-decoration: none;
 }
 
+.btn {
+    display: inline-block;
+    min-width: 118px;
+    padding: 0 16px;
+    line-height: 50px;
+    color: #fff;
+    text-align: center;
+    font-size: 1.6rem;
+    font-weight: 600;
+    border-radius: 24.5px;
+    background: #171100;
+}
+
 .main-content {
     width: 1170px;
     /* Tạo khoảng trống 2 bên khi màn hình bị co nhỏ lại */
@@ -24,8 +37,17 @@ a {
 }
 
 /* Header */
+.header {
+    background: #fffcf4;
+}
+.header.fixed {
+    position: sticky;
+    top: -28px;
+}
 .header .body {
     display: flex;
+    align-items: center;
+    padding: 36px 0 8px;
 }
 
 .nav ul {
@@ -38,13 +60,46 @@ a {
     /* Nên Action cũng sẽ bị dịch chuyển */
     /* Theo câu lệnh margin-left: auto */
     /* font-weight mặc định là 400 */
+    /* căn phải */
     margin-left: auto;
 }
 
 .nav a {
+    position: relative;
     color: #5f5b53;
     text-align: center;
     font-size: 1.6rem;
     /* Tạo ra vùng bấm lớn hơn cho nút */
     padding: 8px 21px;
+}
+
+.nav a:hover,
+.nav li.active a {
+    /* Dùng font-weight sẽ bị giựt nội dung khi hover */
+    /* font-weight: 600; */
+    /* Cách khắc phục */
+    text-shadow: 1px 0 0 currentColor;
+    color: #171100;
+}
+
+.nav li.active a::after {
+    /* before với after thì luôn có content */
+    position: absolute;
+    left: 21px;
+    /* gần quá không đo được khoảng cách thì phóng to màn hình lên */
+    /* đếm các ô vuông, mỗi 1 ô = 1 px */
+    bottom: 6px;
+    display: block;
+    content: "";
+    width: 12px;
+    height: 2px;
+    border-radius: 1px;
+    background: #171100;
+}
+
+.header .sign-up-btn {
+    min-width: 144px;
+}
+.header .action {
+    margin-left: 49px;
 }
