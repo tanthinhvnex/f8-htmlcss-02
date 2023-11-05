@@ -32,10 +32,27 @@ a {
     color: #ffffff;
     background: #171100;
     border-radius: 999px;
+    cursor: pointer;
 }
 
 .btn:hover {
     opacity: 0.9;
+}
+
+.heading {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: #171100;
+}
+
+.heading.lv1 {
+    font-size: 5.8rem;
+    line-height: 1.17;
+}
+.heading.lv2 {
+    font-size: 3.8rem;
+    line-height: 1.26;
 }
 
 .main-content {
@@ -45,6 +62,22 @@ a {
     margin-right: auto;
 }
 
+.line-clamp {
+    display: -webkit-box;
+    /* Đặt giá trị mặc định tối đa là 1 dòng */
+    -webkit-line-clamp: var(--line-clamp, 1);
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.line-clamp.line-2 {
+    --line-clamp: 2;
+}
+
+/* Khi viết từ bị lỗi không có khoảng cách */
+.break-all {
+    word-break: break-all;
+}
 /* Header */
 .header {
     background: #fffcf4;
@@ -188,15 +221,6 @@ a {
     padding: 64px 0 0 130px;
 }
 
-.hero .heading {
-    font-family: var(--font-heading);
-    font-weight: 700;
-    font-size: 5.8rem;
-    line-height: 1.17;
-    letter-spacing: -0.02em;
-    color: #171100;
-}
-
 .hero .desc {
     margin-top: 22px;
     font-size: 1.8rem;
@@ -256,4 +280,219 @@ a {
     font-size: 4.4rem;
     line-height: 1.23;
     color: #171100;
+}
+
+/* Popular */
+.popular {
+    padding: 65px 0;
+    margin-top: 135px;
+}
+
+.popular-top {
+    display: flex;
+    justify-content: space-between;
+}
+
+.popular-top .desc {
+    width: 458px;
+    margin-top: 16px;
+    color: #5f5b53;
+    font-size: 1.8rem;
+    line-height: 1.67;
+}
+.popular-top .controls {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+.popular-top .control-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--primary-color);
+    background: transparent;
+}
+.popular-top .control-btn img {
+    width: 40%;
+}
+
+.popular-top .control-btn:hover {
+    cursor: pointer;
+    background: var(--primary-color);
+}
+
+.popular .course-list {
+    display: flex;
+    gap: 30px;
+    margin-top: 55px;
+}
+
+.popular .course-item {
+    flex: 1;
+    background: #ffffff;
+    border: 1px solid #e2dfda;
+    border-radius: 12px;
+}
+
+.popular .course-item:hover {
+    /* không dùng border: none */
+    /* vì sẽ tạo ra giật giật */
+    /* vì nó là kích thước của 1 phần tử */
+    /* nên dùng border-color */
+    border-color: none;
+    box-shadow: 0px 18px 36px 0px rgba(0, 0, 0, 0.05);
+}
+.popular .course-item .thumb {
+    /* Setup kích thước bằng kích thước cha */
+    width: 100%;
+    height: 278px;
+    object-fit: cover;
+    /* Khi mà tạo border radius như này */
+    /* Nó sẽ bị dư ra cái viền 4 hướng */
+    border-radius: 12px 12px 0px 0px;
+    /* để không bị dư ra */
+    /* dùng margin -1 */
+    margin: -1px;
+    /* Mà dùng -1 thì cái viền bên trên, bên trái ổn */
+    /* bên dưới, bên phải bị dư ra */
+    /* nên sửa lại cái width một xíu */
+    width: calc(100% + 2px);
+}
+
+.popular .course-item .info {
+    padding: 16px 22px 22px;
+}
+.popular .course-item .rating,
+.popular .course-item .foot,
+.popular .course-item .head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.popular .course-item .title a {
+    /* Để ngôi sao không bao giờ chạm vào tiêu đề */
+    padding-right: 4px;
+    color: #171100;
+    font-size: 1.8rem;
+    font-weight: 600;
+    line-height: 1.67;
+}
+.popular .rating .value {
+    margin-left: 6px;
+    color: #fea31b;
+    font-size: 1.6rem;
+    line-height: 1.75;
+}
+
+.popular .course-item .desc {
+    margin-top: 6px;
+    color: #5f5b53;
+    font-size: 1.4rem;
+    line-height: 1.86;
+}
+
+.popular .course-item .foot {
+    margin-top: 12px;
+}
+
+.popular .course-item .price {
+    color: #171100;
+    font-size: 1.8rem;
+    font-weight: 600;
+    line-height: 1.67;
+}
+
+.popular .course-item .btn {
+    border: none;
+    background-color: #000;
+}
+
+.popular .course-item .book-btn {
+    border: none;
+}
+
+.popular .course-item .book-btn:hover {
+    background: var(--primary-color);
+    color: #fff;
+}
+
+/* Feedback */
+.feedback {
+    padding: 96px 0;
+    margin-top: 135px;
+    background: #2e2100;
+}
+
+.feedback-list {
+    display: flex;
+    overflow: hidden;
+}
+
+.feedback-item {
+    display: flex;
+    /* Do quá khổ, các con sẽ bị ép lại */
+    /* Để không ép lại dùng flex-shink */
+    flex-shrink: 0;
+    width: 100%;
+    /* Cách để trượt đơn giản */
+    /* transform: translateX(-100%);
+    transition: all ease 0.3s; */
+}
+
+.feedback-item .info .avatar {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.feedback-item .info .title {
+    margin-top: 18px;
+    color: #f7f7f7;
+    font-family: "Sen";
+    font-size: 2.4rem;
+    font-weight: 700;
+    line-height: 1.41;
+}
+
+.feedback-item .info .desc {
+    margin-top: 4px;
+    color: #bfbcb2;
+    font-size: 1.4rem;
+    line-height: 1.86;
+}
+
+.feedback-item .dots {
+    margin-top: 28px;
+    display: flex;
+}
+.feedback-item .dot {
+    margin-right: 6px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #634700;
+    cursor: pointer;
+}
+
+.feedback-item .dot.active {
+    background-color: var(--primary-color);
+    cursor: default;
+}
+
+.feedback-item .content {
+    width: 66%;
+    margin-left: auto;
+}
+
+.feedback-item .content blockquote {
+    margin-left: 30px;
+    color: #fff;
+    font-size: 2.6rem;
+    font-style: italic;
+    line-height: 1.54;
 }
